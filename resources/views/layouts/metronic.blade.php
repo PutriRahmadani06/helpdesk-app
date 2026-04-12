@@ -69,10 +69,13 @@
                                 </div>
                                 <div class="separator my-2"></div>
                                 <div class="menu-item px-5">
-                                    {{-- <a href="{{ route('profile') }}" class="menu-link px-5">Profil Saya</a> --}}
+                                    <a href="#" class="menu-link px-5">Profil Saya</a>
                                 </div>
                                 <div class="menu-item px-5">
-                                    {{-- <a href="{{ route('logout') }}" class="menu-link px-5">Keluar</a> --}}
+                                    <a class="menu-link px-5" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -90,6 +93,8 @@
                     <div id="kt_app_sidebar_wrapper" class="app-sidebar-wrapper">
                         <div class="hover-scroll-y my-5 my-lg-2 mx-4" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_header" data-kt-scroll-wrappers="#kt_app_sidebar_wrapper" data-kt-scroll-offset="5px">
                             <div id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false" class="app-sidebar-menu-primary menu menu-column menu-rounded menu-sub-indention menu-state-bullet-primary px-3 mb-5">
+                                
+                                <!-- Dashboard -->
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{ route('dashboard') }}">
                                         <span class="menu-icon">
@@ -98,22 +103,53 @@
                                         <span class="menu-title">Dashboard</span>
                                     </a>
                                 </div>
+                                
+                                <!-- Semua Pengaduan -->
                                 <div class="menu-item">
-                                    {{-- <a class="menu-link" href="{{ route('pengaduan.index') }}"> --}}
+                                    <a class="menu-link" href="{{ route('complaints.index') }}">
                                         <span class="menu-icon">
                                             <i class="ki-outline ki-message-text-2 fs-2"></i>
                                         </span>
                                         <span class="menu-title">Semua Pengaduan</span>
                                     </a>
                                 </div>
+                                
+                                <!-- Buat Pengaduan -->
                                 <div class="menu-item">
-                                    {{-- <a class="menu-link" href="{{ route('pengaduan.create') }}"> --}}
+                                    <a class="menu-link" href="{{ route('complaints.create') }}">
                                         <span class="menu-icon">
                                             <i class="ki-outline ki-add-files fs-2"></i>
                                         </span>
                                         <span class="menu-title">Buat Pengaduan</span>
                                     </a>
                                 </div>
+                                
+                                <!-- Separator -->
+                                <div class="separator my-4"></div>
+                                
+                                <!-- Profil Saya -->
+                                <div class="menu-item">
+                                    <a class="menu-link" href="#">
+                                        <span class="menu-icon">
+                                            <i class="ki-outline ki-profile-circle fs-2"></i>
+                                        </span>
+                                        <span class="menu-title">Profil Saya</span>
+                                    </a>
+                                </div>
+                                
+                                <!-- Logout -->
+                                <div class="menu-item">
+                                    <a class="menu-link" href="#" onclick="event.preventDefault(); document.getElementById('sidebar-logout-form').submit();">
+                                        <span class="menu-icon">
+                                            <i class="ki-outline ki-exit-right fs-2"></i>
+                                        </span>
+                                        <span class="menu-title">Keluar</span>
+                                    </a>
+                                    <form id="sidebar-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
