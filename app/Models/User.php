@@ -16,6 +16,10 @@ class User extends Authenticatable
         'email',
         'password',
         'user_type',
+        'role',
+        'nim',
+        'nik',
+        'nip',
         'gender',
         'birth_date',
         'phone',
@@ -30,24 +34,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'birth_date' => 'date',
-        ];
-    }
-
-    // Helper untuk menampilkan gender dalam bentuk teks
-    public function getGenderLabelAttribute()
-    {
-        return $this->gender == 'male' ? 'Laki-laki' : 'Perempuan';
-    }
-
-    // Untuk login menggunakan username (TANPA email)
-    public function findForPassport($username)
-    {
-        return $this->where('username', $username)->first();
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'birth_date' => 'date',
+    ];
 }
